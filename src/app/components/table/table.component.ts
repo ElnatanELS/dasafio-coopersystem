@@ -9,6 +9,7 @@ import { IInvestimento } from 'src/app/model/IIvesntimento';
 import { CurrencyPipe } from '@angular/common';
 import { FormArray, FormControl, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material';
+import { valorAcimaValidator } from 'src/utils/valorAcimaValidator';
 
 @Component({
   selector: 'app-table',
@@ -19,6 +20,7 @@ export class TableComponent implements OnInit, AfterViewInit {
   readonly titleColumnEnum = TitleColumnEnum;
   formsInput = new FormArray([]);
   disabledButton = false;
+
 
   @Input() data: IInvestimento[] | IAcoesData[];
   @Input() displayedColumns: String[];
@@ -31,9 +33,10 @@ export class TableComponent implements OnInit, AfterViewInit {
 
 
   ngOnInit() {
-    this.data.forEach(() => {
+    this.data.forEach((data) => {
+
       this.formsInput.push(new FormControl('', [
-        Validators.required]))
+        valorAcimaValidator(data.saldoAcumulado)]))
 
     })
 
@@ -69,11 +72,17 @@ export class TableComponent implements OnInit, AfterViewInit {
   }
 
   openDialog() {
-    const dialogRef = this.dialog.open(DialogResgateComponent, {data: this.formsInput.value});
+    const dialogRef = this.dialog.open(DialogResgateComponent, {data:
+      {
+        controls: this.formsInput,
+        rows: this.data}});
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
+    ;
+  }
+
+  log(te){
+    console.log(te);
+
   }
 
 }

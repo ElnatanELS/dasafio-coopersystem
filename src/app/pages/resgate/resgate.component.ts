@@ -34,20 +34,13 @@ export class ResgateComponent implements OnInit {
 
   valorTotal(event){
     this.valorTotalAResgatar = 0;
-    console.log(event);
     for (let i=0; i<event.length;i++){
-      console.log(event[i])
       if (event[i] !== '') {
-        this.valorTotalAResgatar += parseInt(event[i])
+        this.valorTotalAResgatar += parseFloat(event[i])
 
       }
   }
 
-    // event.forEach(valor => {
-    //   console.log(valor);
-
-    //   this.valorTotalAResgatar = this.valorTotalAResgatar + valor as number;
-    // });
   }
 
 

@@ -5,22 +5,22 @@
     <mat-grid-tile [colspan]="1" [rowspan]="1">
      <p>
        <span>Nome</span>
-       <br><h3>{{dataRouter.nome}}</h3>
+       <br><h4>{{dataRouter.nome}}</h4>
       </p>
 
     </mat-grid-tile>
     <mat-grid-tile [colspan]="1" [rowspan]="1">
-      <mat-divider vertical style="height: 100px"></mat-divider>
+      <mat-divider vertical class="divider"></mat-divider>
       <p>
         <span>Saldo total disponível</span>
-        <br><h3>{{dataRouter.saldoTotalDisponivel |  currency:'BRL':true:'1.2-2'}}</h3>
+        <br><h4>{{dataRouter.saldoTotalDisponivel |  currency:'BRL':true:'1.2-2'}}</h4>
        </p>
     </mat-grid-tile>
     <mat-grid-tile [colspan]="1" [rowspan]="1">
-      <mat-divider vertical style="height: 100px"></mat-divider>
+      <mat-divider vertical class="divider"></mat-divider>
       <p>
         <span>Valor total a regatar</span>
-        <br><h3>{{valorTotalAResgatar |  currency:'BRL':true:'1.2-2'}}</h3>
+        <br><h4>{{valorTotalAResgatar |  currency:'BRL':true:'1.2-2'}}</h4>
        </p>
     </mat-grid-tile>
   </mat-grid-list>

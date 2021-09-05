@@ -1,3 +1,4 @@
+import { CurrencyPipe } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material';
 
@@ -8,9 +9,36 @@ import { MAT_DIALOG_DATA } from '@angular/material';
 })
 export class DialogResgateComponent implements OnInit {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any) { }
+  indexError:number;
+  title: string = "RESGATE EFETUADO COM SUCESSO!"
+  conteudo: string = "O valor solicitado estará em sua conta em até 5 dias úteis."
+  buttonDisbled = true;
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any,
+  private currencyPipe:CurrencyPipe,) {
+
+  }
 
   ngOnInit() {
+    this.indexError = this.data.controls.controls.findIndex(data => {
+      console.log(data);
+      return data.status === "INVALID"
+
+    });
+    this.isError(this.indexError);
+
   }
+
+  isError(index){
+    if (index >= 0) {
+      this.title = "ERRO NO RESGATE"
+      this.conteudo = `${this.data.rows[index].acao} com valor de resgate maior que ${this.currencyPipe.transform(this.data.rows[index].saldoAcumulado,'BRL')}`
+      this.buttonDisbled = false
+
+    }
+  }
+
+
+
 
 }

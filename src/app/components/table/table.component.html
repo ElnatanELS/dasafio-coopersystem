@@ -13,10 +13,11 @@
               type="text"
               matInput
               [formControl]="formsInput.controls[i]"
+
             />
 
-            <mat-error *ngIf="formsInput.controls[i].hasError('required')">
-              Email is <strong>required</strong>
+            <mat-error *ngIf="formsInput.controls[i].hasError('valorMaior')">
+           valor de resgate maior que <strong>{{element.saldoAcumulado |  currency:'BRL':true:'1.2-2'}}</strong>
             </mat-error>
           </mat-form-field>
         </div>
