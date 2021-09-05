@@ -1,3 +1,4 @@
+import { DialogResgateComponent } from './pages/dialog-resgate/dialog-resgate.component';
 import { ResgateComponent } from './pages/resgate/resgate.component';
 import { TableComponent } from './components/table/table.component';
 import { ListInvestimentoComponent } from './pages/list-investimento/list-investimento.component';
@@ -10,6 +11,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from 'src/shared/material-module/material-module.module';
 import { CurrencyPipe } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,8 @@ import { CurrencyPipe } from '@angular/common';
     HeaderComponent,
     ListInvestimentoComponent,
     TableComponent,
-    ResgateComponent
+    ResgateComponent,
+    DialogResgateComponent
 
 
   ],
@@ -26,8 +29,11 @@ import { CurrencyPipe } from '@angular/common';
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
+    ReactiveFormsModule,
+    FormsModule,
 
   ],
+  entryComponents: [DialogResgateComponent],
   providers: [CurrencyPipe],
   bootstrap: [AppComponent]
 })

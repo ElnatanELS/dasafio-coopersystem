@@ -19,12 +19,12 @@
     <mat-grid-tile [colspan]="1" [rowspan]="1">
       <mat-divider vertical style="height: 100px"></mat-divider>
       <p>
-        <span>Saldo total disponível</span>
-        <br><h3>{{dataRouter.saldoTotalDisponivel |  currency:'BRL':true:'1.2-2'}}</h3>
+        <span>Valor total a regatar</span>
+        <br><h3>{{valorTotalAResgatar |  currency:'BRL':true:'1.2-2'}}</h3>
        </p>
     </mat-grid-tile>
   </mat-grid-list>
 </mat-card>
 
 <h3>DADOS DO INVESTIMENTO</h3>
-<app-table [data]="data" [displayedColumns]="columns"></app-table>
+<app-table [data]="data" [displayedColumns]="columns" (changeValue)=valorTotal($event)></app-table>
