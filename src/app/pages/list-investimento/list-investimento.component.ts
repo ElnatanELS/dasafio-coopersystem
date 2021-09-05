@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { IInvestimento } from 'src/app/model/IIvesntimento';
 import { InvestimentoService } from 'src/app/service/investimento-service.service';
 
 @Component({
@@ -18,6 +17,8 @@ export class ListInvestimentoComponent implements OnInit {
       this.data = res.response.data.listaInvestimentos
 
     })
+
+
   }
 
 

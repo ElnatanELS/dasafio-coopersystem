@@ -57,7 +57,11 @@ export class TableComponent implements OnInit, AfterViewInit {
 
 
   goToResgate(row){
-    this._router.navigate(['resgate'], { ...row});
+    if (row.indicadorCarencia === 'N') {
+      this._router.navigate(['resgate'], { ...row});
+
+    }
+
 
   }
 
@@ -72,17 +76,31 @@ export class TableComponent implements OnInit, AfterViewInit {
   }
 
   openDialog() {
-    const dialogRef = this.dialog.open(DialogResgateComponent, {data:
-      {
-        controls: this.formsInput,
-        rows: this.data}});
+    if (this.valorTotal(this.formsInput.value) === 0) {
+      const dialogRef = this.dialog.open(DialogResgateComponent, {data:
+        {
+          erro: 'Sem valor Preenchido'}});
 
-    ;
+      ;
+    } else {
+
+      const dialogRef = this.dialog.open(DialogResgateComponent, {data:
+        {
+          controls: this.formsInput,
+          rows: this.data}});
+    }
+
+
   }
 
-  log(te){
-    console.log(te);
+  valorTotal(list){
+    let valor = 0;
+    for (let i=0; i<list.length;i++){
+      if (list[i] !== '') {
+        valor += parseFloat(list[i])
 
-  }
+      }
+    return valor
+  }}
 
 }

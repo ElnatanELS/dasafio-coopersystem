@@ -20,12 +20,20 @@ export class DialogResgateComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.indexError = this.data.controls.controls.findIndex(data => {
-      console.log(data);
-      return data.status === "INVALID"
+    if (this.data.erro) {
 
-    });
-    this.isError(this.indexError);
+      this.title = "ERRO NO RESGATE"
+      this.conteudo = this.data.erro
+      this.buttonDisbled = false
+    } else {
+      this.indexError = this.data.controls.controls.findIndex(data => {
+        console.log(data);
+        return data.status === "INVALID"
+
+      });
+      this.isError(this.indexError);
+
+    }
 
   }
 
