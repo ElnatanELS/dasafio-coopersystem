@@ -1,3 +1,30 @@
-<p>
-  resgate works!
-</p>
+<h3>DADOS DO INVESTIMENTO</h3>
+
+<mat-card>
+  <mat-grid-list cols="4" rowHeight="100px">
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+     <p>
+       <span>Nome</span>
+       <br><h3>{{dataRouter.nome}}</h3>
+      </p>
+
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <mat-divider vertical style="height: 100px"></mat-divider>
+      <p>
+        <span>Saldo total disponível</span>
+        <br><h3>{{dataRouter.saldoTotalDisponivel |  currency:'BRL':true:'1.2-2'}}</h3>
+       </p>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <mat-divider vertical style="height: 100px"></mat-divider>
+      <p>
+        <span>Saldo total disponível</span>
+        <br><h3>{{dataRouter.saldoTotalDisponivel |  currency:'BRL':true:'1.2-2'}}</h3>
+       </p>
+    </mat-grid-tile>
+  </mat-grid-list>
+</mat-card>
+
+<h3>DADOS DO INVESTIMENTO</h3>
+<app-table [data]="data" [displayedColumns]="columns"></app-table>
